@@ -39,7 +39,7 @@
         }
 
         .login-header h1 {
-            color: #333;
+            color: #e0e0e0;
             font-size: 28px;
             margin-bottom: 10px;
             font-weight: 600;
