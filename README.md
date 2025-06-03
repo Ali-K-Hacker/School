@@ -1,83 +1,109 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>تسجيل الدخول</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .login-container {
-      background-color: #fff;
+    .login-box {
+      background: white;
       padding: 40px 30px;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       width: 100%;
-      text-align: center;
-    }
-
-    .login-container img {
-      width: 60px;
-      margin-bottom: 15px;
+      max-width: 400px;
     }
 
     h2 {
-      margin: 10px 0 15px;
+      margin-bottom: 25px;
       color: #333;
     }
 
-    p {
-      margin-bottom: 25px;
-      color: #666;
-      font-size: 14px;
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
     }
 
-    input[type="text"],
-    input[type="password"] {
+    input[type="text"], input[type="password"] {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
+      padding: 12px 15px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus {
+      border-color: #6e8efb;
+      box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #888;
     }
 
     button {
       width: 100%;
       padding: 12px;
-      background: linear-gradient(to right, #667eea, #764ba2);
+      border: none;
+      background: #6e8efb;
       color: white;
       font-size: 16px;
-      border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: 0.3s;
     }
 
     button:hover {
-      background: linear-gradient(to right, #5a67d8, #6b46c1);
+      background: #5a76f3;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Lock Icon">
+  <div class="login-box">
     <h2>تسجيل الدخول</h2>
-    <p>يرجى إدخال بيانات الدخول للوصول إلى الموقع</p>
     <form>
-      <input type="text" placeholder="اسم المستخدم" required>
-      <input type="password" placeholder="كلمة المرور" required>
+      <div class="input-group">
+        <input type="text" placeholder="اسم المستخدم" required>
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="كلمة المرور" id="password" required>
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+      </div>
       <button type="submit">دخول</button>
     </form>
   </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      const icon = document.querySelector(".toggle-password");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.textContent = "🙈";
+      } else {
+        passwordInput.type = "password";
+        icon.textContent = "👁️";
+      }
+    }
+  </script>
 </body>
 </html>
