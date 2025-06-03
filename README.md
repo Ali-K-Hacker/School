@@ -1,4 +1,3 @@
-
 <html lang="ar" dir="rtl">
 <head>
     <meta name="generator" content="none">  <!-- إخفاء أي إشارة لأداة التطوير -->
@@ -20,6 +19,16 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            position: relative;
+        }
+
+        .school-title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .login-container {
@@ -39,7 +48,7 @@
         }
 
         .login-header h1 {
-            color: #e0e0e0;
+            color: #000000;
             font-size: 28px;
             margin-bottom: 10px;
             font-weight: 600;
@@ -84,7 +93,7 @@
         .login-btn {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #6a8cff 0%, #4a6bff 100%);
             border: none;
             border-radius: 10px;
             color: white;
@@ -184,6 +193,8 @@
     </style>
 </head>
 <body>
+    <div class="school-title">School</div>
+    
     <!-- صفحة تسجيل الدخول -->
     <div class="login-container" id="loginPage">
         <div class="login-header">
