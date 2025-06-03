@@ -1,6 +1,6 @@
 <html lang="ar" dir="rtl">
 <head>
-    <meta name="generator" content="none">  <!-- إخفاء أي إشارة لأداة التطوير -->
+    <meta name="generator" content="none">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تسجيل الدخول</title>
@@ -22,13 +22,26 @@
             position: relative;
         }
 
+        /* المستطيل العلوي الجديد */
+        .top-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #000000 100%);
+            z-index: 1;
+        }
+
+        /* كلمة School الجديدة - معدلة */
         .school-title {
             position: absolute;
-            top: 20px;
+            top: 15px;
             left: 20px;
             color: white;
-            font-size: 24px;
+            font-size: 30px;
             font-weight: bold;
+            z-index: 2;
         }
 
         .login-container {
@@ -41,6 +54,7 @@
             max-width: 400px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 0;
         }
 
         .login-header {
@@ -193,9 +207,9 @@
     </style>
 </head>
 <body>
+    <div class="top-cover"></div>
     <div class="school-title">School</div>
     
-    <!-- صفحة تسجيل الدخول -->
     <div class="login-container" id="loginPage">
         <div class="login-header">
             <div class="lock-icon">🔒</div>
@@ -222,7 +236,6 @@
         </div>
     </div>
 
-    <!-- صفحة الترحيب مع الأزرار -->
     <div class="login-container" id="welcomePage" style="display: none;">
         <div class="login-header">
             <div class="success-icon">✅</div>
@@ -246,14 +259,10 @@
     </div>
 
     <script>
-        // بيانات تسجيل الدخول
         const VALID_USERNAME = "school";
         const VALID_PASSWORD = "2030";
-        
-        // رابط الموقع المحمي
         const PROTECTED_SITE_URL = "https://sites.google.com/view/md7turki/%D8%A7%D9%84%D8%B5%D9%81%D8%AD%D8%A9-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9?authuser=0";
 
-        // عناصر الصفحة
         const loginPage = document.getElementById('loginPage');
         const welcomePage = document.getElementById('welcomePage');
         const loginForm = document.getElementById('loginForm');
@@ -261,7 +270,6 @@
         const accessBtn = document.getElementById('accessSite');
         const logoutBtn = document.getElementById('logoutBtn');
 
-        // معالج تسجيل الدخول
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -269,36 +277,28 @@
             const password = document.getElementById('password').value;
             
             if (username === VALID_USERNAME && password === VALID_PASSWORD) {
-                // إخفاء صفحة تسجيل الدخول وإظهار صفحة الترحيب
                 loginPage.style.display = 'none';
                 welcomePage.style.display = 'block';
             } else {
-                // عرض رسالة خطأ
                 errorMessage.style.display = 'block';
                 
-                // إخفاء رسالة الخطأ بعد 3 ثوان
                 setTimeout(() => {
                     errorMessage.style.display = 'none';
                 }, 3000);
                 
-                // مسح الحقول
                 document.getElementById('username').value = '';
                 document.getElementById('password').value = '';
             }
         });
 
-        // زر الدخول إلى الموقع
         accessBtn.addEventListener('click', function() {
             window.open(PROTECTED_SITE_URL, '_blank');
         });
 
-        // زر تسجيل الخروج
         logoutBtn.addEventListener('click', function() {
-            // العودة إلى صفحة تسجيل الدخول
             welcomePage.style.display = 'none';
             loginPage.style.display = 'block';
             
-            // مسح الحقول
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
         });
